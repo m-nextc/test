@@ -6,9 +6,9 @@ pipeline {
         DOCKER_TAG = 'latest'                 // Tag de l'image Docker
     }
 
-    triggers {
-        pollSCM('* * * * *')  // Optionnel, utilise Git polling si le webhook ne fonctionne pas
-    }
+//    triggers {
+  //      pollSCM('* * * * *')  // Optionnel, utilise Git polling si le webhook ne fonctionne pas
+   // }
 
     stages {
         stage('Checkout') {
@@ -21,8 +21,9 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Construire l'image Docker
-                    sh 'docker build -t $DOCKER_IMAGE_NAME:$DOCKER_TAG .'
+deployApp('staging', 'my-app')                    // Construire l'image Docker
+                   
+ sh 'docker build -t $DOCKER_IMAGE_NAME:$DOCKER_TAG .'
                 }
             }
         }
