@@ -18,12 +18,11 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+     stage('Build Docker Image') {
             steps {
                 script {
-deployApp('staging', 'my-app')                    // Construire l'image Docker
-                   
- sh 'docker build -t $DOCKER_IMAGE_NAME:$DOCKER_TAG .'
+			deployApp('staging', 'my-app')                  
+  // Construire l'image Docker	sh 'docker build -t $DOCKER_IMAGE_NAME:$DOCKER_TAG .'
                 }
             }
         }
